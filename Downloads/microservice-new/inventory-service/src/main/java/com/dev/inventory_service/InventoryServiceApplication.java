@@ -5,9 +5,11 @@ import com.dev.inventory_service.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class InventoryServiceApplication {
 
     public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class InventoryServiceApplication {
         return args -> {
             Inventory inv1 = new Inventory();
             inv1.setSkuCode("iphone_13");
-            inv1.setQuantity(50);
+            inv1.setQuantity(0);
 
             Inventory inv2 = new Inventory();
             inv2.setSkuCode("samsung_galaxy_s23");

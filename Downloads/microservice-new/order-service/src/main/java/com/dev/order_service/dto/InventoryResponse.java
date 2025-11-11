@@ -1,6 +1,9 @@
-package com.dev.inventory_service.dto;
+package com.dev.order_service.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author DELL
