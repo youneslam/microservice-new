@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional
 public class OrderService {
-    private final WebClient webClient;
+    private final WebClient.Builder webClient;
     private final OrderRepository orderRepository;
     public void placeOrder(OrderRequest orderRequest){
         Order order=new Order();
@@ -37,8 +37,8 @@ public class OrderService {
                 OrderLineItems::getSkuCode
         ).toList();
         //call inventoryService to know if is the order is in stock
-        InventoryResponse[] inventoryResponses = webClient.get()
-                .uri("http://localhost:8082/api/inventory", uriBuilder -> {
+        InventoryResponse[] inventoryResponses = webClient.build().get()
+                .uri("http://inventory-service/api/inventory", uriBuilder -> {
                     skuCodes.forEach(code -> uriBuilder.queryParam("skuCode", code));
                     return uriBuilder.build();
                 })
